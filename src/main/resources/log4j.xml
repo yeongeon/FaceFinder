@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n"/>
+        </layout>
+    </appender>
+    <appender name="dailyout" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="dailyout.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value="'.'yyMMdd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n"/>
+        </layout>
+    </appender>
+    <appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="rolling.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="1kb"/>
+        <param name="MaxBackupIndex" value="1"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n"/>
+        </layout>
+    </appender>
+    <appender name="xmlout" class="org.apache.log4j.FileAppender">
+        <param name="file" value="log4jxml.xml"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.xml.XMLLayout"/>
+    </appender>
+
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="dailyout"/>
+    </root>
+</log4j:configuration>
